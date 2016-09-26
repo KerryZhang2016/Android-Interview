@@ -34,7 +34,7 @@ JVM 是基于栈的体系结构来执行 class 字节码的。线程创建后，
 ####内存区域
 Java 虚拟机规范将 JVM 所管理的内存分为以下几个运行时数据区：程序计数器、Java 虚拟机栈、本地方法栈、Java 堆、方法区。
 
-![](http://wiki.jikexueyuan.com/project/java-vm/images/jvmdata.png)
+![](/Users/admin/Documents/jvmdata.png)
 
 #####程序计数器
 一块较小的内存空间，它是当前线程所执行的字节码的行号指示器，字节码解释器工作时通过改变该计数器的值来选择下一条需要执行的字节码指令，分支、跳转、循环等基础功能都要依赖它来实现。每条线程都有一个独立的的程序计数器，各线程间的计数器互不影响，因此该区域是线程私有的。
@@ -71,7 +71,7 @@ Java Heap 是 Java 虚拟机所管理的内存中最大的一块，它是所有�
 直接内存并不是虚拟机运行时数据区的一部分，也不是 Java 虚拟机规范中定义的内存区域，它直接从操作系统中分配，因此不受 Java 堆大小的限制，但是会受到本机总内存的大小及处理器寻址空间的限制，因此它也可能导致 OutOfMemoryError 异常出现。在 JDK1.4 中新引入了 NIO 机制，它是一种基于通道与缓冲区的新 I/O 方式，可以直接从操作系统中分配直接内存，即在堆外分配内存，这样能在一些场景中提高性能，因为避免了在 Java 堆和 Native 堆中来回复制数据。
 
 ####内存溢出
-![](http://wiki.jikexueyuan.com/project/java-vm/images/overflow.md.png)
+![](/Users/admin/Documents/overflow.md.png)
 
 在多线程情况下，给每个线程的栈分配的内存越大，反而越容易产生内存溢出异常。操作系统为每个进程分配的内存是有限制的，虚拟机提供了参数来控制 Java 堆和方法区这两部分内存的最大值，忽略掉程序计数器消耗的内存（很小），以及进程本身消耗的内存，剩下的内存便给了虚拟机栈和本地方法栈，每个线程分配到的栈容量越大，可以建立的线程数量自然就越少。因此，如果是建立过多的线程导致的内存溢出，在不能减少线程数的情况下，就只能通过减少最大堆和每个线程的栈容量来换取更多的线程。
 
@@ -85,8 +85,8 @@ Java Heap 是 Java 虚拟机所管理的内存中最大的一块，它是所有�
 
 另外，由于 reference 类型在 Java 虚拟机规范里面只规定了一个指向对象的引用，并没有定义这个引用应该通过哪种方式去定位，以及访问到 Java 堆中的对象的具体位置，因此不同虚拟机实现的对象访问方式会有所不同，主流的访问方式有两种：使用句柄池和直接使用指针。
 
-![句柄方式](http://wiki.jikexueyuan.com/project/java-vm/images/javastack.png)
-![指针方式](http://wiki.jikexueyuan.com/project/java-vm/images/javastack1.png)
+![句柄方式](/Users/admin/Documents/javastack.png)
+![指针方式](/Users/admin/Documents/javastack1.png)
 
 --
 ###类初始化
